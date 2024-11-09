@@ -1,28 +1,31 @@
 <template>
-    <div>
-        <h1>Create New Post</h1>
-        <form @submit.prevent="createPost">
-            <input v-model="title" placeholder="Title" />
-            <textarea v-model="content" placeholder="Content"></textarea>
-            <button type="submit">Create</button>
-        </form>
-    </div>
+  <div>
+    <h1>Create New Post</h1>
+    <form @submit.prevent="createPost">
+      <input v-model="title" placeholder="Title" />
+      <textarea v-model="content" placeholder="Content"></textarea>
+      <button type="submit">Create</button>
+    </form>
+  </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            title: 'CREATE POST',
-            content: ''
-        };
-    },
-    methods: {
-        createPost() {
-            // 데이터를 저장하는 로직 (여기서는 예시로 콘솔에 출력)
-            console.log('Post created:', this.title, this.content);
-            this.$router.push('/');
-        }
+  data() {
+    return {
+      title: '',
+      content: ''
+    };
+  },
+  methods: {
+    createPost() {
+      // Post 생성 로직 (예시로 Local Storage 사용)
+      const posts = JSON.parse(localStorage.getItem('posts')) || [];
+      const newPost = { id: Date.now(), title: this.title, content: this.content };
+      posts.push(newPost);
+      localStorage.setItem('posts', JSON.stringify(posts));
+      this.$router.push('/');
     }
+  }
 };
 </script>
