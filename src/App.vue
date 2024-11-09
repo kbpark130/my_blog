@@ -1,11 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h1>Vue Blog</h1>
-      <nav>
-        <router-link to="/">MyHome</router-link>
-        <router-link to="/create">Create New Post</router-link>
-      </nav>
+      <h1>팀 블로그에 오신 것을 환영합니다~!</h1>
     </header>
     <main>
       <router-view />
@@ -21,7 +17,7 @@ export default {
   // components: {
   //   MyHome
   // }
-}
+};
 </script>
 
 <style>
@@ -49,4 +45,3 @@ nav a.router-link-exact-active {
   font-weight: bold;
 }
 </style>
-

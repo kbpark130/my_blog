@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1>Create New Post</h1>
+    <h1>ì‹ ê·œ ë¸”ë¡œê·¸ ìƒì„±</h1>
     <form @submit.prevent="createPost">
-      <input v-model="title" placeholder="Title" />
-      <textarea v-model="content" placeholder="Content"></textarea>
-      <button type="submit">Create</button>
+      <input v-model="title" placeholder="ì œëª©" />
+      <textarea v-model="content" placeholder="ë¸”ë¡œê·¸ ë‚´ìš©"></textarea>
+      <button type="submit">ì¶”ê°€</button>
     </form>
   </div>
 </template>
@@ -14,18 +14,22 @@ export default {
   data() {
     return {
       title: '',
-      content: ''
+      content: '',
     };
   },
   methods: {
     createPost() {
-      // Post »ı¼º ·ÎÁ÷ (¿¹½Ã·Î Local Storage »ç¿ë)
+      // Post ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½Ã·ï¿½ Local Storage ï¿½ï¿½ï¿½)
       const posts = JSON.parse(localStorage.getItem('posts')) || [];
-      const newPost = { id: Date.now(), title: this.title, content: this.content };
+      const newPost = {
+        id: Date.now(),
+        title: this.title,
+        content: this.content,
+      };
       posts.push(newPost);
       localStorage.setItem('posts', JSON.stringify(posts));
       this.$router.push('/');
-    }
-  }
+    },
+  },
 };
 </script>
