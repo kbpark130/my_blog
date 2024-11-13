@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+spec:
+  replicas: 2  # 생성할 파드 수
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+      - name: test-container
+        image: kbpark130/my_blog:latest  # 사용할 Docker 이미지
+        ports:
+        - containerPort: 8080  # 애플리케이션이 리스닝하는 포트
